@@ -9,6 +9,7 @@ const ejs=require("ejs");
 const expressLayouts=require('express-ejs-layouts')
 const indexRouter=require('./routes/index')
 const authorRouter=require('./routes/author')
+const bookRouter=require('./routes/books')
 
 
 const mongoose=require('mongoose')
@@ -28,6 +29,7 @@ app.use(express.urlencoded({limit: '10mb', extended:false}))
 app.use(express.json());
 app.use('/',indexRouter)
 app.use('/authors',authorRouter)
+app.use('/books',bookRouter)
 
 
 
