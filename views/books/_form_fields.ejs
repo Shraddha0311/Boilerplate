@@ -1,3 +1,23 @@
+<head>
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script>
+        // Register the plugin
+        FilePond.registerPlugin(FilePondPluginImagePreview);
+        FilePond.registerPlugin(FilePondPluginFileEncode);
+        FilePond.registerPlugin(FilePondPluginImageResize);
+        FilePond.setOptions({
+        stylePanelAspectRatio: 150 / 100,
+        imageResizeTargetWidth: 100,
+        imageResizeTargetHeight: 150
+        })
+        // ... FilePond initialisation code here
+        </script>
+</head>
 <div>
 <label>Title</label>
 <input type="text" name="title" value="<%= book.title %>"> 
@@ -25,7 +45,12 @@
     </div>
 <div>
         <label>Cover</label>
-        <input type="file" name="cover" > 
+        <input type="file" name="cover" class="filepond" > 
+        
+  <!-- Turn all file input elements into ponds -->
+  <script>
+  FilePond.parse(document.body);
+  </script>
 </div>
 <div>
     <label>Description</label>
